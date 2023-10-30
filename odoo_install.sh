@@ -135,7 +135,7 @@ if [ $INSTALL_WKHTMLTOPDF = "True" ]; then
       _url=$WKHTMLTOX_X32
   fi
   sudo wget $_url
-  
+
 
   if [[ $(lsb_release -r -s) == "22.04" ]]; then
     # Ubuntu 22.04 LTS
@@ -144,7 +144,7 @@ if [ $INSTALL_WKHTMLTOPDF = "True" ]; then
       # For older versions of Ubuntu
     sudo gdebi --n `basename $_url`
   fi
-  
+
   sudo ln -s /usr/local/bin/wkhtmltopdf /usr/bin
   sudo ln -s /usr/local/bin/wkhtmltoimage /usr/bin
 else
@@ -415,7 +415,7 @@ if [ $INSTALL_NGINX = "True" ] && [ $ENABLE_SSL = "True" ] && [ $ADMIN_EMAIL != 
   echo "SSL/HTTPS is enabled!"
 else
   echo "SSL/HTTPS isn't enabled due to choice of the user or because of a misconfiguration!"
-  if $ADMIN_EMAIL = "odoo@example.com";then 
+  if $ADMIN_EMAIL = "odoo@example.com";then
     echo "Certbot does not support registering odoo@example.com. You should use real e-mail address."
   fi
   if $WEBSITE_NAME = "_";then
