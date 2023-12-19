@@ -317,7 +317,7 @@ if [ $INSTALL_NGINX = "True" ]; then
   echo -e "\n---- Installing and setting up Nginx ----"
   sudo apt install nginx -y
   cat <<EOF > ~/odoo
-map $http_upgrade $connection_upgrade {
+map \$http_upgrade \$connection_upgrade {
   default upgrade;
   ''      close;
 }
@@ -377,12 +377,12 @@ server {
 
   location /websocket {
     proxy_pass http://127.0.0.1:$LONGPOLLING_PORT;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection $connection_upgrade;
-    proxy_set_header X-Forwarded-Host $host;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Upgrade \$http_upgrade;
+    proxy_set_header Connection \$connection_upgrade;
+    proxy_set_header X-Forwarded-Host \$host;
+    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto \$scheme;
+    proxy_set_header X-Real-IP \$remote_addr;
   }
 
   location ~* .(js|css|png|jpg|jpeg|gif|ico)$ {
